@@ -1,5 +1,11 @@
 import React, { DependencyList, useEffect, useState } from "react";
 
+interface WithFallBackProps {
+    when: boolean
+    fallback: JSX.Element
+    children?: JSX.Element | JSX.Element[]
+}
+
 export default function WithFallBack({ when, fallback, children }: WithFallBackProps) {
     if (when)
         return <>{fallback}</>

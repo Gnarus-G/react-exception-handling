@@ -1,5 +1,20 @@
 import { useState } from "react";
 
+interface State {
+    loading: boolean
+    error: Error
+}
+
+type PartialState = {
+    [K in keyof State]?: any;
+};
+
+interface ExceptionalResult<T> extends State {
+    setState: (state: State) => void
+    setPartialState: (partialState: PartialState) => void
+    h(work: (worker: T) => Promise<void>): Promise<void>
+}
+
 /**
  * 
  * @param worker some object that does asynchronous stuff.
