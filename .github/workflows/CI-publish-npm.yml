@@ -31,7 +31,7 @@ jobs:
         run: npm test
       
       - name: Build lib
-        run: npm build
+        run: npm run build
       
       - name: Install npm-cli-login
         run: sudo npm i -g npm-cli-login
