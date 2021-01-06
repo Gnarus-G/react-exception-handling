@@ -1,4 +1,4 @@
-name: CI
+name: CI to npm
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         with:
           path: |
             node_modules
-            usr/lib/node_modules
+            usr/**/node_modules
           key: ${{ runner.os }}-node_modules-${{hashFiles('**/package.json')}}
           restore-keys: ${{ runner.os }}-node_modules-
 
@@ -34,7 +34,7 @@ jobs:
         run: npm build
       
       - name: Install npm-cli-login
-        run: npm i -g npm-cli-login
+        run: sudo npm i -g npm-cli-login
       
       - name: Login to npm
         run: npm-cli-login -u 'gnarus-g' -p '${{secrets.NPM_PASSWORD}}' -e '${{secrets.NPM_EMAIL}}'
