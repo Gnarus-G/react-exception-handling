@@ -3,11 +3,9 @@
     "version": "1.0.0",
     "description": "Components and hooks useful for handling errors when loading asynchronous resources.",
     "types":"lib",
-    "files": [
-        "lib"
-    ],
+    "private": true,
     "scripts": {
-        "build": "rm -rf lib && tsc -p .",
+        "build": "rm -rf lib && tsc -p . && cat ./package.json | grep -v '\"private\":' > lib/package.json",
         "test": "jest",
         "test:watch": "jest --watch"
     },
@@ -21,7 +19,7 @@
         "handling",
         "exceptions"
     ],
-    "author": "Ghislain Deffo",
+    "author": "Gnarus-G",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/Gnarus-G/react-exception-handling/issues"
