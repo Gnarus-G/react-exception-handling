@@ -7,7 +7,8 @@
     "scripts": {
         "build": "rm -rf lib && tsc -p . && cat ./package.json | grep -v '\"private\":' > lib/package.json",
         "test": "jest",
-        "test:watch": "jest --watch"
+        "test:watch": "jest --watch",
+        "publish": "npm publish lib"
     },
     "repository": {
         "type": "git",
