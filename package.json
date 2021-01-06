@@ -1,6 +1,6 @@
 {
     "name": "react-exception-handling",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Components and hooks useful for handling errors when loading asynchronous resources.",
     "scripts": {
         "build": "rm -rf lib && tsc -p . && cat ./package.json | grep -v '\"private\":' > lib/package.json && cp README.md lib && cp LICENSE lib",
