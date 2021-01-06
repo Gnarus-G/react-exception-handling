@@ -7,13 +7,10 @@
         ],
         "esModuleInterop": true,
         "moduleResolution": "node",
-        "module": "esnext",
+        "module": "commonjs",
         "jsx": "preserve",
         "outDir": "lib",
-        "declaration": true,
-        "declarationDir": "lib/types",
-        "sourceMap": true,
-        "declarationMap": true
+        "declaration": true
     },
     "exclude": [
         "node_modules"

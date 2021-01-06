@@ -27,11 +27,11 @@ export function useLag(delay?: number, dependencies?: DependencyList) {
     useEffect(() => {
         let isMounted = true;
         setTimeout(() => {
-            if(isMounted)
+            if (isMounted)
                 setLag(false)
         }, delay || 0)
 
-        return () => isMounted = false;
+        return () => { isMounted = false };
     }, dependencies)
     return lag
 }
