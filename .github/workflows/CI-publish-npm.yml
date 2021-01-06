@@ -40,7 +40,7 @@ jobs:
         run: npm-cli-login -u 'gnarus-g' -p '${{secrets.NPM_PASSWORD}}' -e '${{secrets.NPM_EMAIL}}'
 
       - name: Version bump
-        run: npm version patch
+        run: npm version --no-git-tag-version patch
       
       - name: Publish package
         run: npm publish lib
