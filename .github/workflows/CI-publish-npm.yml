@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Cache
+        uses: actions/cache@v2.1.3
+        with:
+          path: |
+            node_modules
+            usr/lib/node_modules
+          key: ${{ runner.os }}-node_modules-${{hashFiles('**/package.json')}}
+          restore-keys: ${{ runner.os }}-node_modules-
+
+      - name: Install dependencies
+        run: npm i
+        
+      - name: Run tests
+        run: npm test
+      
+      - name: Build lib
+        run: npm build
+      
+      - name: Install npm-cli-login
+        run: npm i -g npm-cli-login
+      
+      - name: Login to npm
+        run: npm-cli-login -u 'gnarus-g' -p '${{secrets.NPM_PASSWORD}}' -e '${{secrets.NPM_EMAIL}}'
+      
+      - name: Publish package
+        run: npm publish lib
