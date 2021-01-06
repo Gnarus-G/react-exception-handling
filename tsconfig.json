@@ -10,7 +10,8 @@
         "module": "esnext",
         "jsx": "preserve",
         "outDir": "lib",
-        "declaration": true
+        "declaration": true,
+        "declarationDir": "lib/types"
     },
     "exclude": [
         "node_modules"
