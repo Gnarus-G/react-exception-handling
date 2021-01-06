@@ -6,7 +6,8 @@
     "scripts": {
         "build": "rm -rf lib && tsc -p . && cat ./package.json | grep -v '\"private\":' > lib/package.json && cp README.md lib && cp LICENSE lib",
         "test": "jest",
-        "test:watch": "jest --watch"
+        "test:watch": "jest --watch",
+        "postversion": "git push"
     },
     "repository": {
         "type": "git",

@@ -30,9 +30,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Version bump
-        run: npm version --no-git-tag-version patch
-
       - name: Build lib
         run: npm run build
       
