@@ -6,7 +6,7 @@ interface ErrorBoundaryProps {
     children?: JSX.Element | JSX.Element[]
 }
 
-export default function ErrorBoundary({ children, error, advice }: ErrorBoundaryProps) {
+export function ErrorBoundary({ children, error, advice }: ErrorBoundaryProps) {
     if (error)
         return <div>{error.toString()}{advice && ` -->> ${advice}`}</div>
     else

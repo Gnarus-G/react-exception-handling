@@ -6,7 +6,7 @@ interface WithFallBackProps {
     children?: JSX.Element | JSX.Element[]
 }
 
-export default function WithFallBack({ when, fallback, children }: WithFallBackProps) {
+export function WithFallBack({ when, fallback, children }: WithFallBackProps) {
     if (when)
         return <>{fallback}</>
     return <>{children}</>

@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from '@testing-library/react'
-import ErrorBoundary from '../../src/component/ErrorBoundary'
+import { ErrorBoundary } from '../../src/component/ErrorBoundary'
 
 test("renders error", () => {
     const { getByText } = render(<ErrorBoundary error={new Error("Bad Thing happened")}>

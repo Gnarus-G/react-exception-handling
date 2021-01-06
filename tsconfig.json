@@ -8,7 +8,7 @@
         "esModuleInterop": true,
         "moduleResolution": "node",
         "module": "commonjs",
-        "jsx": "preserve",
+        "jsx": "react",
         "outDir": "lib",
         "declaration": true
     },
