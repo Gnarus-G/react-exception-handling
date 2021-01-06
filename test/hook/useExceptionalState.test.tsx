@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react"
 import { act, renderHook } from "@testing-library/react-hooks"
 import React, { useEffect } from "react"
-import { WithFallBack } from "../../src/component/WithFallBack"
-import { useExceptionalState } from "../../src/hook/useExceptionalState"
+import { WithFallBack } from "../../src/component"
+import { useExceptionalState } from "../../src/hook"
 
 const worker = async () => {
     return "done"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface State {
     loading: boolean
@@ -20,12 +20,7 @@ interface ExceptionalResult<T> extends State {
  * @param worker some object that does asynchronous stuff.
  */
 export function useExceptionalState<T>(worker: T): ExceptionalResult<T> {
-    console.log('window.React :>> ', window.React);
 
-    useEffect(() => {
-
-        console.log('window.React :>> ', window.React);
-    })
     const [state, setState] = useState<State>({ loading: false, error: null });
 
     function setPartialState(partial: PartialState) {
