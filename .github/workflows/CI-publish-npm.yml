@@ -29,7 +29,10 @@ jobs:
         
       - name: Run tests
         run: npm test
-      
+
+      - name: Version bump
+        run: npm version --no-git-tag-version patch
+
       - name: Build lib
         run: npm run build
       
@@ -39,8 +42,5 @@ jobs:
       - name: Login to npm
         run: npm-cli-login -u 'gnarus-g' -p '${{secrets.NPM_PASSWORD}}' -e '${{secrets.NPM_EMAIL}}'
 
-      - name: Version bump
-        run: npm version --no-git-tag-version patch
-      
       - name: Publish package
         run: npm publish lib
