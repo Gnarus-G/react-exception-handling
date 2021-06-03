@@ -5,22 +5,17 @@
         "esModuleInterop": true,
         "module": "commonjs",
         "jsx": "react",
-        "outDir": "lib",
         "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true,
         "strict": true,
         "baseUrl": ".",
         "paths": {
-            "@component/*": ["src/component/*"],
-            "@hook/*": ["src/hook/*"]
+            "@component/*": ["component/*"],
+            "@hook/*": ["hook/*"]
         }
     },
-    "exclude": [
-        "node_modules"
-    ],
     "include": [
-        "src",
+        "component",
+        "hook",
         "test"
     ]
 }

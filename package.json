@@ -9,8 +9,10 @@
         "postversion": "git push"
     },
     "files": [
-        "lib"
+        "component/*.d.ts",
+        "hook"
     ],
+    "types": "index.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Gnarus-G/react-exception-handling.git"
