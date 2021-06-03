@@ -1,23 +1,26 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "lib": [
-            "dom",
-            "es6"
-        ],
+        "lib": [ "dom", "es6" ],
         "esModuleInterop": true,
-        "moduleResolution": "node",
         "module": "commonjs",
         "jsx": "react",
         "outDir": "lib",
         "declaration": true,
-        "strict": true
+        "declarationMap": true,
+        "sourceMap": true,
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "@component/*": ["src/component/*"],
+            "@hook/*": ["src/hook/*"]
+        }
     },
     "exclude": [
         "node_modules"
     ],
     "include": [
-        "src/**/*.ts",
-        "src/**/*.tsx"
+        "src",
+        "test"
     ]
 }
