@@ -1,8 +1,11 @@
-import WithFallBack from "@component/WithFallBack"
-import useProxyState from "@hook/useProxyState"
+/// <reference path="../../component/WithFallBack.tsx"/>
+/// <reference path="../../hook/useProxyState.ts"/>
+
 import { render } from "@testing-library/react"
 import { act, renderHook } from "@testing-library/react-hooks"
 import React, { useEffect } from "react"
+import WithFallBack from "../../component/WithFallBack"
+import useProxyState from "../../hook/useProxyState"
 
 const worker = async () => {
     return "done"

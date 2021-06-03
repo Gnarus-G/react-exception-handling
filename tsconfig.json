@@ -6,13 +6,9 @@
         "module": "commonjs",
         "jsx": "react",
         "declaration": true,
-        "strict": true,
-        "baseUrl": ".",
-        "paths": {
-            "@component/*": ["component/*"],
-            "@hook/*": ["hook/*"]
-        }
+        "strict": true
     },
+    "exclude": ["test"],
     "include": [
         "component",
         "hook",

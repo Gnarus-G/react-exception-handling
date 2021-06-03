@@ -1,6 +1,8 @@
+/// <reference path="../../component/WithFallBack.tsx"/>
+
 import React from "react"
 import { render } from "@testing-library/react"
-import WithFallBack from "@component/WithFallBack"
+import WithFallBack from "../../component/WithFallBack"
 
 describe("WithFallBack component behavior", () => {
     test("renders fallback", () => {

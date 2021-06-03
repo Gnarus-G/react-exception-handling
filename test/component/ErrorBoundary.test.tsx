@@ -1,6 +1,8 @@
+/// <reference path="../../component/ErrorBoundary.tsx"/>
+
 import React from "react"
 import { render } from '@testing-library/react'
-import ErrorBoundary from "@component/ErrorBoundary"
+import ErrorBoundary from "../../component/ErrorBoundary"
 
 test("renders error", () => {
     const { getByText } = render(<ErrorBoundary error={new Error("Bad Thing happened")}>

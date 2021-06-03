@@ -43,7 +43,6 @@
         "react-dom": "latest",
         "react-test-renderer": "latest",
         "ts-jest": "latest",
-        "tsconfig-paths-jest": "^0.0.1",
         "typescript": "latest"
     },
     "peerDependencies": {
