@@ -5,9 +5,7 @@ interface State {
     error: Error
 }
 
-type PartialState = {
-    [K in keyof State]?: any;
-};
+type PartialState = Partial<State>;
 
 interface ExceptionalResult<T> extends State {
     setState: (state: State) => void
@@ -19,7 +17,7 @@ interface ExceptionalResult<T> extends State {
  * 
  * @param worker some object that does asynchronous stuff.
  */
-export function useExceptionalState<T>(worker: T): ExceptionalResult<T> {
+export function useProxyState<T>(worker: T): ExceptionalResult<T> {
 
     const [state, setState] = useState<State>({ loading: false, error: null });
 

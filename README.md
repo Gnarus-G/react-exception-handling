@@ -9,7 +9,7 @@ Custom state hook
 ```typescript
 const someAsyncWorker = async () => "done"; // could be any object, as long as asynchronous stuff happens in h()
 
-const { h, error, loading } = useExceptionalState(someAsyncWorker);
+const { h, error, loading } = useProxyState(someAsyncWorker);
 useEffect(() => {
     h(async worker => {
         await worker()

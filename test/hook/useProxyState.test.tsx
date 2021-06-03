@@ -2,7 +2,7 @@ import { render } from "@testing-library/react"
 import { act, renderHook } from "@testing-library/react-hooks"
 import React, { useEffect } from "react"
 import { WithFallBack } from "../../src/component"
-import { useExceptionalState } from "../../src/hook"
+import { useProxyState } from "../../src/hook"
 
 const worker = async () => {
     return "done"
@@ -13,7 +13,7 @@ const shirker = async () => {
 }
 
 test("happy path", async () => {
-    const { result } = renderHook(() => useExceptionalState(worker))
+    const { result } = renderHook(() => useProxyState(worker))
     const current = () => result.current;
     expect(current().loading).toBe(false)
     expect(current().error).toBeNull()
@@ -31,7 +31,7 @@ test("happy path", async () => {
 })
 
 test("fail simple path", async () => {
-    const { result } = renderHook(() => useExceptionalState(shirker))
+    const { result } = renderHook(() => useProxyState(shirker))
     const current = () => result.current;
     expect(current().loading).toBe(false)
     expect(current().error).toBeNull()
@@ -69,13 +69,15 @@ describe("dynamic loading state", () => {
 })
 
 const TestComp = ({ worker }) => {
-    const { h, loading } = useExceptionalState(worker);
+    const { h, loading } = useProxyState(worker);
 
     useEffect(() => {
         h(async worker => await worker().then())
     }, [])
 
-    return <WithFallBack fallback={<div>Loading...</div>} when={loading}>
-        <div>All Good</div>
-    </WithFallBack>
+    return (
+        <WithFallBack fallback={<div>Loading...</div>} when={loading}>
+            <div>All Good</div>
+        </WithFallBack>
+    )
 }

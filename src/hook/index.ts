@@ -1,7 +1,3 @@
-import { useExceptionalState } from "./useExceptionalState";
-import { useLag } from "./useLag";
+import { useProxyState } from "./useExceptionalState";
 
-export {
-    useExceptionalState,
-    useLag
-}
+export { useProxyState }
