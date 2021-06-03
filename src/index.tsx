@@ -1,2 +1,2 @@
-export { WithLaggedFallBack, ErrorBoundary, WithFallBack } from "./component"
-export { useProxyState } from "./hook"
+export * from "./component"
+export * from "./hook"

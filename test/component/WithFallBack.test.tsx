@@ -1,6 +1,6 @@
 import React from "react"
 import { render } from "@testing-library/react"
-import { WithFallBack, WithLaggedFallBack } from "../../src/component"
+import { WithFallBack} from "../../src/component"
 
 describe("WithFallBack component behavior", () => {
     test("renders fallback", () => {

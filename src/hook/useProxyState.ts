@@ -2,14 +2,12 @@ import { useState } from "react";
 
 interface State {
     loading: boolean
-    error: Error
+    error: Error | null
 }
 
 type PartialState = Partial<State>;
 
-interface ExceptionalResult<T> extends State {
-    setState: (state: State) => void
-    setPartialState: (partialState: PartialState) => void
+interface AsyncHandlingState<T> extends State {
     h(work: (worker: T) => Promise<void>): Promise<void>
 }
 
@@ -17,7 +15,7 @@ interface ExceptionalResult<T> extends State {
  * 
  * @param worker some object that does asynchronous stuff.
  */
-export function useProxyState<T>(worker: T): ExceptionalResult<T> {
+export function useProxyState<T>(worker: T): AsyncHandlingState<T> {
 
     const [state, setState] = useState<State>({ loading: false, error: null });
 
@@ -39,8 +37,6 @@ export function useProxyState<T>(worker: T): ExceptionalResult<T> {
     return {
         loading,
         error,
-        setState,
-        setPartialState,
         h
     }
 }

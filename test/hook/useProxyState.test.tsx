@@ -15,7 +15,7 @@ const shirker = async () => {
 test("happy path", async () => {
     const { result } = renderHook(() => useProxyState(worker))
     const current = () => result.current;
-    expect(current().loading).toBe(false)
+
     expect(current().error).toBeNull()
 
     let workResult: string;
@@ -23,7 +23,6 @@ test("happy path", async () => {
         await current().h(async worker => {
             workResult = await worker()
         })
-        expect(current().loading).toBe(false)
     })
 
     expect(workResult).toBe("done")
@@ -33,7 +32,7 @@ test("happy path", async () => {
 test("fail simple path", async () => {
     const { result } = renderHook(() => useProxyState(shirker))
     const current = () => result.current;
-    expect(current().loading).toBe(false)
+
     expect(current().error).toBeNull()
 
     let workResult: string;
@@ -41,7 +40,6 @@ test("fail simple path", async () => {
         await current().h(async worker => {
             workResult = await worker()
         })
-        expect(current().loading).toBe(false)
     })
 
     expect(workResult).toBeUndefined()
