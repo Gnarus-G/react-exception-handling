@@ -1,6 +1,6 @@
 import React from 'react'
 
-interface ErrorBoundaryProps {
+export interface ErrorBoundaryProps {
     error: Error | null
     advice?: string
     children?: JSX.Element | JSX.Element[]

@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-interface State {
+interface ProxyState {
     loading: boolean
     error: Error | null
 }
 
-interface AsyncHandlingState<T> extends State {
+interface AsyncHandlingState<T> extends ProxyState {
     h(work: (worker: T) => Promise<void>): Promise<void>
 }
 
@@ -14,7 +14,7 @@ interface AsyncHandlingState<T> extends State {
  */
 export default function useProxyState<T>(worker: T): AsyncHandlingState<T> {
 
-    const [state, setState] = useState<State>({ loading: false, error: null });
+    const [state, setState] = useState<ProxyState>({ loading: false, error: null });
 
     async function h(work: (worker: T) => Promise<void>) {
         try {
