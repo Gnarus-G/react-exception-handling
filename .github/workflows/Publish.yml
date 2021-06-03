@@ -32,12 +32,7 @@ jobs:
 
       - name: Build lib
         run: npm run build
-      
-      - name: Install npm-cli-login
-        run: sudo npm i -g npm-cli-login
-      
-      - name: Login to npm
-        run: npm-cli-login -u 'gnarus-g' -p '${{secrets.NPM_PASSWORD}}' -e '${{secrets.NPM_EMAIL}}'
-
-      - name: Publish package
-        run: npm publish lib
+        
+      - uses: JS-Devtools/npm-publish@v1
+        with:
+          token: ${{secrets.NPM_TOKEN}}
