@@ -18,7 +18,7 @@ test("happy path", async () => {
 
     expect(current().error).toBeNull()
 
-    let workResult: string;
+    let workResult = "";
     await act(async () => {
         await current().h(async worker => {
             workResult = await worker()
@@ -35,15 +35,15 @@ test("fail simple path", async () => {
 
     expect(current().error).toBeNull()
 
-    let workResult: string;
+    let workResult = "";
     await act(async () => {
         await current().h(async worker => {
             workResult = await worker()
         })
     })
 
-    expect(workResult).toBeUndefined()
-    expect(current().error.message).toBe("I'm Bad")
+    expect(workResult).toBeFalsy()
+    expect(current().error?.message).toBe("I'm Bad")
 })
 
 describe("dynamic loading state", () => {
@@ -66,7 +66,10 @@ describe("dynamic loading state", () => {
     })
 })
 
-const TestComp = ({ worker }) => {
+interface TestCompProps {
+    worker: () => Promise<string>
+}
+const TestComp = ({ worker }: TestCompProps) => {
     const { h, loading } = useProxyState(worker);
 
     useEffect(() => {

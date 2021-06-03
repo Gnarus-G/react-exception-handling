@@ -1,3 +1,2 @@
-import { useProxyState } from "./useProxyState";
-
+import useProxyState from "./useProxyState";
 export { useProxyState }

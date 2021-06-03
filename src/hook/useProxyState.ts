@@ -5,31 +5,24 @@ interface State {
     error: Error | null
 }
 
-type PartialState = Partial<State>;
-
 interface AsyncHandlingState<T> extends State {
     h(work: (worker: T) => Promise<void>): Promise<void>
 }
 
 /**
- * 
  * @param worker some object that does asynchronous stuff.
  */
-export function useProxyState<T>(worker: T): AsyncHandlingState<T> {
+export default function useProxyState<T>(worker: T): AsyncHandlingState<T> {
 
     const [state, setState] = useState<State>({ loading: false, error: null });
 
-    function setPartialState(partial: PartialState) {
-        setState({ ...state, ...partial })
-    }
-
     async function h(work: (worker: T) => Promise<void>) {
         try {
-            setPartialState({ loading: true })
+            setState({ loading: true, error: null })
             await work(worker)
-            setPartialState({ loading: false })
+            setState({ loading: false, error: null })
         } catch (error) {
-            setPartialState({ loading: false, error })
+            setState({ loading: false, error })
         }
     }
 

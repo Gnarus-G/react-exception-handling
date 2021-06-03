@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface ErrorBoundaryProps {
-    error: Error
+    error: Error | null
     advice?: string
     children?: JSX.Element | JSX.Element[]
 }
