@@ -1,6 +1,6 @@
 {
     "name": "react-exception-handling",
-    "version": "1.0.7",
+    "version": "1.1.0",
     "description": "Components and hooks useful for handling errors when loading asynchronous resources.",
     "scripts": {
         "build": "tsc",
