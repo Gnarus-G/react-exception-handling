@@ -2,7 +2,7 @@
     "name": "react-exception-handling",
     "version": "1.1.4",
     "description": "Components and hooks useful for handling errors when loading asynchronous resources.",
-    "main": "dist/index.ts",
+    "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
         "test": "jest",
@@ -12,7 +12,7 @@
     "files": [
         "dist"
     ],
-    "types": "dist",
+    "types": "dist/index.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Gnarus-G/react-exception-handling.git"
