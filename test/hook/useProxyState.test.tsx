@@ -3,9 +3,10 @@
 import { render } from "@testing-library/react"
 import { act, renderHook } from "@testing-library/react-hooks"
 import React, { useEffect } from "react"
-import { useProxyState, WithFallBack } from "../.."
+import { WithFallBack } from "../.."
+import { useProxy } from "../../src"
 
-const worker = async () => {
+const worker = async (s?: string) => {
     return "done"
 }
 
@@ -14,16 +15,14 @@ const shirker = async () => {
 }
 
 test("happy path", async () => {
-    const { result } = renderHook(() => useProxyState(worker))
+    const { result } = renderHook(() => useProxy(worker))
     const current = () => result.current;
 
     expect(current().error).toBeNull()
 
     let workResult = "";
     await act(async () => {
-        await current().h(async worker => {
-            workResult = await worker()
-        })
+        workResult = await current().h()
     })
 
     expect(workResult).toBe("done")
@@ -31,16 +30,14 @@ test("happy path", async () => {
 })
 
 test("fail simple path", async () => {
-    const { result } = renderHook(() => useProxyState(shirker))
+    const { result } = renderHook(() => useProxy(shirker))
     const current = () => result.current;
 
     expect(current().error).toBeNull()
 
     let workResult = "";
     await act(async () => {
-        await current().h(async worker => {
-            workResult = await worker()
-        })
+        workResult = await current().h()
     })
 
     expect(workResult).toBeFalsy()
@@ -71,10 +68,10 @@ interface TestCompProps {
     worker: () => Promise<string>
 }
 const TestComp = ({ worker }: TestCompProps) => {
-    const { h, loading } = useProxyState(worker);
+    const { h, loading } = useProxy(worker);
 
     useEffect(() => {
-        h(async worker => await worker().then())
+        h();
     }, [])
 
     return (

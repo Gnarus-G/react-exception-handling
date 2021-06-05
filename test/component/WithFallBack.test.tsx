@@ -1,3 +1,4 @@
+/// <reference path="../../src/index.ts"/>
 /// <reference path="../../index.tsx"/>
 
 import React from "react"
