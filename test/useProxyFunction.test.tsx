@@ -1,7 +1,8 @@
 import React, { useEffect } from "react"
 import { act, HookResult, renderHook } from "@testing-library/react-hooks"
-import { AsyncProxyHandler, useProxy } from "../src"
+import { useProxy } from "../src"
 import { render } from "@testing-library/react";
+import { AsyncProxyHandler } from "../src/interface";
 
 const asink = async (s?: string, s1?: string) => {
     if (s === "")

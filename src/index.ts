@@ -1,14 +1,6 @@
+import { AsyncProxyHandler } from './interface';
 import useProxyFunction, { AsyncFunction } from './useProxyFunction'
 import useProxyObject, { AsyncInterface } from './useProxyObject'
-
-export interface ProxyState {
-    loading: boolean
-    error: Error | null
-}
-
-export interface AsyncProxyHandler<T> extends ProxyState {
-    h: T
-}
 
 export function useProxy<T extends AsyncFunction>
     (asink: T): AsyncProxyHandler<T>;

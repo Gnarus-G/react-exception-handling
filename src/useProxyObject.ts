@@ -1,5 +1,5 @@
 import React from 'react'
-import { AsyncProxyHandler, ProxyState } from '.';
+import { AsyncProxyHandler, ProxyState } from './interface';
 
 export type AsyncInterface<T> = {
     [k in keyof T]: (...params: any[]) => Promise<any>
