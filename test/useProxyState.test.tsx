@@ -1,10 +1,9 @@
-/// <reference path="../../index.tsx"/>
+/// <reference path="../src/index.ts"/>
 
 import { render } from "@testing-library/react"
 import { act, renderHook } from "@testing-library/react-hooks"
 import React, { useEffect } from "react"
-import { WithFallBack } from "../.."
-import { useProxy } from "../../src"
+import { useProxy } from "../src"
 
 const worker = async (s?: string) => {
     return "done"
@@ -70,13 +69,9 @@ interface TestCompProps {
 const TestComp = ({ worker }: TestCompProps) => {
     const { h, loading } = useProxy(worker);
 
-    useEffect(() => {
-        h();
-    }, [])
+    useEffect(() => { h() }, [])
 
-    return (
-        <WithFallBack fallback={<div>Loading...</div>} when={loading}>
-            <div>All Good</div>
-        </WithFallBack>
-    )
+    if (loading)
+        return <div> Loading...</div>
+    return <div>All Good</div>
 }
