@@ -1,8 +1,9 @@
 import React from 'react'
 import { AsyncProxyHandler, ProxyState } from './interface';
+import { AsyncFunction } from './useProxyFunction';
 
 export type AsyncInterface<T> = {
-    [k in keyof T]: (...params: any[]) => Promise<any>
+    [k in keyof T]: AsyncFunction
 };
 
 export default function useProxyObject<T extends AsyncInterface<T>>
