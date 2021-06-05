@@ -1,6 +1,6 @@
 {
     "name": "react-exception-handling",
-    "version": "1.2.0",
+    "version": "2.0.0",
     "description": "Components and hooks useful for handling errors when loading asynchronous resources.",
     "main": "dist/index.js",
     "scripts": {
