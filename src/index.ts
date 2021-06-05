@@ -12,7 +12,7 @@ export interface AsyncProxyHandler<T> extends ProxyState {
 
 export function useProxy<T extends AsyncFunction>
     (asink: T): AsyncProxyHandler<T>;
-export function useProxy<T extends AsyncInterface>
+export function useProxy<T extends AsyncInterface<T>>
     (asink: T): AsyncProxyHandler<T>;
 
 export function useProxy(asink: any): AsyncProxyHandler<any> {

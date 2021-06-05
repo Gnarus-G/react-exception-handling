@@ -1,11 +1,11 @@
 import React from 'react'
 import { AsyncProxyHandler, ProxyState } from '.';
 
-export interface AsyncInterface {
-    [key: string]: (...params: any[]) => Promise<any>
+export type AsyncInterface<T> = {
+    [k in keyof T]: (...params: any[]) => Promise<any>
 };
 
-export default function useProxyObject<T extends AsyncInterface>
+export default function useProxyObject<T extends AsyncInterface<T>>
     (obj: T): AsyncProxyHandler<T> {
 
     const [state, setState] = React.useState<ProxyState>
@@ -21,10 +21,10 @@ export default function useProxyObject<T extends AsyncInterface>
                 try {
                     setState({ loading: true, error: null })
                     const ret = await fun.apply(target, params);
-                    setState({ loading: true, error: null })
+                    setState({ loading: false, error: null })
                     return ret;
                 } catch (error) {
-                    setState({ loading: true, error: null })
+                    setState({ loading: true, error })
                 }
             }
         },
